@@ -1,12 +1,83 @@
-let productos = [];
-
-fetch("./productos.json")
-    .then(response => response.json())
-    .then(data => {
-        productos = data;
-        cargarProductos(productos);
-    })
-
+let productos = [  {
+    "id": "abrigo-01",
+    "titulo": "Abrigo 01",
+    "imagen": "./imagenes/abrigos/01.jpg",
+    "categoria": {
+        "nombre": "Abrigos",
+        "id": "abrigos"
+    },
+    "precio": 1000
+},
+{
+    "id": "abrigo-02",
+    "titulo": "Abrigo 02",
+    "imagen": "./imagenes/abrigos/02.jpg",
+    "categoria": {
+        "nombre": "Abrigos",
+        "id": "abrigos"
+    },
+    "precio": 1000
+},
+{
+    "id": "abrigo-03",
+    "titulo": "Abrigo 03",
+    "imagen": "./imagenes/abrigos/03.jpg",
+    "categoria": {
+        "nombre": "Abrigos",
+        "id": "abrigos"
+    },
+    "precio": 1000
+},
+{
+    "id": "camiseta-01",
+    "titulo": "Camiseta 01",
+    "imagen": "./imagenes/camisetas/01.jpg",
+    "categoria": {
+        "nombre": "Camisetas",
+        "id": "camisetas"
+    },
+    "precio": 1000
+},
+{
+    "id": "camiseta-02",
+    "titulo": "Camiseta 02",
+    "imagen": "./imagenes/camisetas/02.jpg",
+    "categoria": {
+        "nombre": "Camisetas",
+        "id": "camisetas"
+    },
+    "precio": 1000
+},
+{
+    "id": "camiseta-03",
+    "titulo": "Camiseta 03",
+    "imagen": "./imagenes/camisetas/03.jpg",
+    "categoria": {
+        "nombre": "Camisetas",
+        "id": "camisetas"
+    },
+    "precio": 1000
+},
+{
+    "id": "pantalon-02",
+    "titulo": "Pantalón 02",
+    "imagen": "./imagenes/pantalones/02.jpg",
+    "categoria": {
+        "nombre": "Pantalones",
+        "id": "pantalones"
+    },
+    "precio": 1000
+},
+{
+    "id": "pantalon-03",
+    "titulo": "Pantalón 03",
+    "imagen": "./imagenes/pantalones/03.jpg",
+    "categoria": {
+        "nombre": "Pantalones",
+        "id": "pantalones"
+    },
+    "precio": 1000
+}];
 
 const contenedorProductos = document.querySelector("#contenedor-productos");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
@@ -42,7 +113,7 @@ function cargarProductos(productosElegidos) {
 
     actualizarBotonesAgregar();
 }
-
+cargarProductos(productos)
 
 botonesCategorias.forEach(boton => {
     boton.addEventListener("click", (e) => {
@@ -83,27 +154,6 @@ if (productosEnCarritoLS) {
 }
 
 function agregarAlCarrito(e) {
-
-    Toastify({
-        text: "Producto agregado",
-        duration: 3000,
-        close: true,
-        gravity: "top", 
-        position: "right", 
-        stopOnFocus: true, 
-        style: {
-          background: "linear-gradient(to right, #4b33a8, #785ce9)",
-          borderRadius: "2rem",
-          textTransform: "uppercase",
-          fontSize: ".75rem"
-        },
-        offset: {
-            x: '1.5rem', 
-            y: '1.5rem',
-          },
-        onClick: function(){}
-      }).showToast();
-
     const idBoton = e.currentTarget.id;
     const productoAgregado = productos.find(producto => producto.id === idBoton);
 
